@@ -40,7 +40,7 @@ This application reads `.txt` documents from the `documents/` folder, creates de
 ## 📁 Project Structure
 
 ```text
-UnProf_Pyai_22/
+UnProf_Pyai_21/
 ├── main.py               # The CLI RAG application utilizing LangChain LCEL
 ├── requirements.txt      # Python dependencies
 ├── README.md             # Project documentation

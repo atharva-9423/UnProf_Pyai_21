@@ -1,7 +1,6 @@
 import os
 import sys
 
-# Suppress HuggingFace and warning messages
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 import warnings
 warnings.filterwarnings("ignore")
@@ -52,7 +51,6 @@ def main():
         print("Example: $env:GEMINI_API_KEY=\"your_api_key\"\n")
         sys.exit(1)
 
-    # Use gemini-1.5-flash for the chat model
     llm = ChatGoogleGenerativeAI(
         model="gemini-3.5-flash", 
         google_api_key=os.environ["GEMINI_API_KEY"]
@@ -72,7 +70,6 @@ def main():
         ("human", "{input}"),
     ])
 
-    # LCEL RAG Chain
     rag_chain = (
         {"context": retriever | format_docs, "input": RunnablePassthrough()}
         | prompt
@@ -95,7 +92,6 @@ def main():
         
         print("Searching and generating answer...")
         try:
-            # We pass the input directly since RunnablePassthrough grabs it
             answer = rag_chain.invoke(query)
             print("\n--- Answer ---")
             print(answer)
